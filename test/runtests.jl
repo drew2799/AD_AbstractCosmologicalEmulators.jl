@@ -52,4 +52,5 @@ sc_emu = SimpleChainsEmulator(Architecture = mlpd, Weights = weights,
     @test_logs (:warn, "We do not know which parameters were included in the emulators training space. Use this trained emulator with caution!") AbstractCosmologicalEmulators.get_emulator_description(Dict("pippo" => "franco"))
     @test_logs (:warn, "No emulator description found!") AbstractCosmologicalEmulators._get_emulator_description_dict(Dict("pippo" => "franco"))
     @test isapprox(run_emulator(input, sc_emu), run_emulator(input, lux_emu))
+    @test get_emulator_description(sc_emu) == get_emulator_description(NN_dict["emulator_description"])
 end
