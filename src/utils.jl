@@ -1,9 +1,9 @@
 function maximin_input!(input, in_MinMax)
-    @. input = (input - in_MinMax[:,1]) ./ (in_MinMax[:,2] - in_MinMax[:,1])
+    @views @. input = (input - in_MinMax[:,1]) ./ (in_MinMax[:,2] - in_MinMax[:,1])
 end
 
 function inv_maximin_output!(output, out_MinMax)
-    @. output = output .* (out_MinMax[:,2] - out_MinMax[:,1]) + out_MinMax[:,1]
+    @views @. output = output .* (out_MinMax[:,2] - out_MinMax[:,1]) + out_MinMax[:,1]
 end
 
 function get_emulator_description(input_dict::Dict)
