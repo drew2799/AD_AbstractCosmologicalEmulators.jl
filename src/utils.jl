@@ -25,5 +25,10 @@ function get_emulator_description(input_dict::Dict)
 end
 
 function get_emulator_description(emu::AbstractTrainedEmulators)
-    get_emulator_description(emu.Description)
+    try
+        get_emulator_description(emu.Description["emulator_description"])
+    catch
+        @warn "No emulator description present!"
+    end
+
 end
