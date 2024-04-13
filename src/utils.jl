@@ -1,10 +1,10 @@
 function maximin_input(input, in_MinMax)
-    @views @. result = (input - in_MinMax[:,1]) ./ (in_MinMax[:,2] - in_MinMax[:,1])
+    result = @views @.  (input - in_MinMax[:,1]) ./ (in_MinMax[:,2] - in_MinMax[:,1])
     return result
 end
 
 function inv_maximin_output(output, out_MinMax)
-    @views @. result = output .* (out_MinMax[:,2] - out_MinMax[:,1]) + out_MinMax[:,1]
+    result = @views @. output .* (out_MinMax[:,2] - out_MinMax[:,1]) + out_MinMax[:,1]
     return result
 end
 
