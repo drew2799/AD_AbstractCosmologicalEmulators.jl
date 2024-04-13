@@ -19,7 +19,7 @@ mlpd = SimpleChain(
 NN_dict = JSON.parsefile(pwd()*"/testNN.json")
 weights = SimpleChains.init_params(mlpd)
 sc_emu = SimpleChainsEmulator(Architecture = mlpd, Weights = weights,
-                              Description = NN_dict["emulator_description"])
+                              Description = NN_dict)
 
 @testset "AbstractEmulators test" begin
     x = rand(m)
