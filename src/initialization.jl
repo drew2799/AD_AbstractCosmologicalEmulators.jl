@@ -111,7 +111,7 @@ function _init_luxemulator(NN_dict::Dict, weight)
     model = _get_nn_lux(NN_dict)
     nn_descript = _get_emulator_description_dict(NN_dict)
     return LuxEmulator(Model = model, Parameters = params, States = states,
-    Device = Lux.cpu_device(), Description= nn_descript)
+    Description= nn_descript)
 end
 
 function init_emulator(NN_dict::Dict, weight, ::Type{LuxEmulator})
