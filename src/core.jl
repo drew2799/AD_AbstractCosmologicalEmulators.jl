@@ -14,7 +14,6 @@ end
     Model
     Parameters
     States
-    Device::Lux.AbstractLuxDevice
     Description::Dict = Dict()
 end
 
