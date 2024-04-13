@@ -109,7 +109,7 @@ end
 function _init_luxemulator(NN_dict::Dict, weight)
     params, states = _get_lux_params_states(NN_dict, weight)
     model = _get_nn_lux(NN_dict)
-    nn_descript = _get_emulator_description_dict(NN_dict)
+    nn_descript = Dict("emulator_description"=>_get_emulator_description_dict(NN_dict))
     return LuxEmulator(Model = model, Parameters = params, States = states,
     Description= nn_descript)
 end
@@ -120,7 +120,7 @@ end
 
 function _init_simplechainsemulator(NN_dict::Dict, weight)
     architecture = _get_nn_simplechains(NN_dict)
-    nn_descript = _get_emulator_description_dict(NN_dict)
+    nn_descript = Dict("emulator_description"=>_get_emulator_description_dict(NN_dict))
     return SimpleChainsEmulator(Architecture = architecture, Weights = weight,
     Description= nn_descript)
 end
