@@ -2,10 +2,26 @@ function maximin_input(input, in_MinMax)
     result = @views @.  (input - in_MinMax[:,1]) ./ (in_MinMax[:,2] - in_MinMax[:,1])
     return result
 end
+@adjoint function maximin_input(input, in_MinMax)
+    o = maximin_input(input, in_MinMax)
+    function maximin_input_PB(ō)
+        ī = ō ./ (in_MinMax[:,2] - in_MinMax[:,1])
+        return  (ī,nothing)
+    end
+    return o, maximin_input_PB
+end
 
 function inv_maximin_output(output, out_MinMax)
     result = @views @. output .* (out_MinMax[:,2] - out_MinMax[:,1]) + out_MinMax[:,1]
     return result
+end
+@adjoint function inv_maximin_output(output, out_MinMax)
+    i = inv_maximin_output(output, out_MinMax)
+    function inv_maximin_output_PB(ī)
+        ō = ī .* (ut_MinMax[:,2] - out_MinMax[:,1])
+        return (ō, nothing)
+    end
+    return i, inv_maximin_output_PB
 end
 
 function get_emulator_description(input_dict::Dict)
