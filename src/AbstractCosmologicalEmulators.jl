@@ -4,6 +4,8 @@ using Base: @kwdef
 using Adapt
 using Lux
 using SimpleChains
+using Zygote: @adjoint
+using Zygote
 
 export AbstractTrainedEmulators, LuxEmulator, SimpleChainsEmulator
 export maximin_input, inv_maximin_output, run_emulator, get_emulator_description,
